@@ -60,7 +60,7 @@ void dequeue(){
     printf("stack underflow\n");
    }
    else{
-    printf("deleted element is %d ",queue[front]);
+    printf("deleted elemen is %d ",queue[front]);
     front ++;
    }
     }
