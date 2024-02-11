@@ -56,8 +56,9 @@ else{
 
  }
 void dequeue(){
-   if(front == -1 || front > rear ){
-    printf("stack underflow\n");
+   if(front == -1 ){
+    printf("stack empty\n");
+    
    }
    else{
     printf("deleted elemen is %d ",queue[front]);
