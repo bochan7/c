@@ -58,13 +58,17 @@ else{
 void dequeue(){
    if(front == -1 ){
     printf("stack empty\n");
-    
    }
    else{
-    printf("deleted elemen is %d ",queue[front]);
-    front ++;
+   printf("dequeued element is %d",queue[front]);
+   front ++;
+   if( front > rear){
+    printf("lol");
+    front = rear = -1;
    }
-    }
+  }
+
+}
 void display(){
     if(front == -1 && rear == -1){
      printf("empty");   
