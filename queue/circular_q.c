@@ -64,23 +64,22 @@ void enqueue(){
     }
 }
 
-void dequeue(){
-    if(front == -1 && rear == -1){
+void dequeue() {
+    if (front == -1 && rear == -1) {
         printf("queue is empty or underflow:\n");
-    }
-    else{
-        printf("dequed element is %d",arr[front]);
-        front ++;
-        if(rear != MAX - 1 && front == MAX - 1){
-            front = 0;
-        }
-        else if ( front == rear + 1 ){
-            printf("stack hs become empty:\n");
+    } else {
+        printf("dequeued element is %d\n", arr[front]);
+        if (front == rear) {
             front = rear = -1;
+        } else {
+            front++;
+            if (front == MAX) {
+                front = 0;
+            }
         }
-
     }
 }
+
 void display(){
 if(front == - 1 && rear == -1){
     printf("stack empty:\n");
