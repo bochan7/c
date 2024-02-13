@@ -1,5 +1,5 @@
 #include<stdio.h>
-#define MAX 10
+#define MAX 4
 int rear = -1;
 int front = -1;
 int arr[MAX];
@@ -54,27 +54,33 @@ void enqueue(){
         arr[rear] = q;
     }
     else{
-        rear ++ ;
+        if( front != 0 && rear == front -1 ){
+            printf("stack is full\n");
+        }
+        else{
+            rear++;
         arr[rear] = q;
+        }
     }
 }
 
 void dequeue(){
-    if(front == -1){
-        printf("queue is empty:\n");
+    if(front == -1 && rear == -1){
+        printf("queue is empty or underflow:\n");
     }
-    else {
-        printf("deleted element is:%d\n",arr[front]);
-        front++;
-        if(front == rear){
+    else{
+        printf("dequed element is %d",arr[front]);
+        front ++;
+        if(rear != MAX - 1 && front == MAX - 1){
+            front = 0;
+        }
+        else if ( front == rear + 1 ){
+            printf("stack hs become empty:\n");
             front = rear = -1;
         }
-        else if(front == MAX -1){
-            front = 0 ;
-        }
-    }    
-}
 
+    }
+}
 void display(){
 if(front == - 1 && rear == -1){
     printf("stack empty:\n");
@@ -86,10 +92,10 @@ else{
         }
     }
     else{
-        for(int i = front ; i < MAX;i++){
+        for(int i = front ; i < MAX; i++){
             printf("%d\n",arr[i]);
         }
-        for(int i=0;i<=rear;i++){
+        for(int i = 0 ; i <= rear; i++){
             printf("%d\n",arr[i]);
         }
     }
