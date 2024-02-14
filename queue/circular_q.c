@@ -71,7 +71,7 @@ void dequeue() {
         printf("dequeued element is %d\n", arr[front]);
         if (front == rear) {
             front = rear = -1;
-            printf("\nstack hs now become empty\n");
+            printf("\nqueue hs now become empty\n");
         } else {
             front++;
             if (front == MAX) {
