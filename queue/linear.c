@@ -1,6 +1,6 @@
 //making a linear queue//
 #include<stdio.h>
-#define MAX 10
+#define MAX 5
 int front = -1;
 int rear = -1;
 int queue[MAX];
@@ -62,7 +62,7 @@ void dequeue(){
    else{
    printf("dequeued element is %d",queue[front]);
    front ++;
-   if( front > rear){
+   if( front == rear + 1){
     printf("lol");
     front = rear = -1;
    }
