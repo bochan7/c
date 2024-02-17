@@ -67,7 +67,8 @@ void enqueue(){
 void dequeue() {
     if (front == -1 && rear == -1) {
         printf("queue is empty or underflow:\n");
-    } else {
+    } 
+    else {
         printf("dequeued element is %d\n", arr[front]);
         if (front == rear) {
             front = rear = -1;
