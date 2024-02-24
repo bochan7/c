@@ -70,7 +70,7 @@ void dequeue() {
     } 
     else {
         printf("dequeued element is %d\n", arr[front]);
-        if (front == rear) {
+        if (front == rear ) {
             front = rear = -1;
             printf("\nqueue hs now become empty\n");
         } else {
