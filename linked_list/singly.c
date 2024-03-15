@@ -17,6 +17,8 @@ void insert_middle();
 void delete_first();
 void delete_last();
 void delete_middle();
+void count_node();
+void search();
 
 
 void main(){
@@ -26,7 +28,8 @@ void main(){
     do{
      printf("\nyou have following operations to perform:\n");
      printf("1.insert\t2.display\t3.insert a element at the first\t4.insert the element at last\t5.insert the element at the middle\n");
-     printf("6.delete the first element\t7.delete the last element\t8.delete the middle element\t9.exit\n");
+     printf("6.delete the first element\t7.delete the last element\t8.delete the middle element\t9.count the number of node\n");
+     printf("10.search a element\t11.exit");
      printf("\nenter ur choice:\n");
      scanf("%d",&choice);
      switch(choice){
@@ -43,25 +46,31 @@ void main(){
          insert_last();
          break;
         case 5:
-        insert_middle();
-        break;
+         insert_middle();
+         break;
         case 6:
-        delete_first();
-        break;
+         delete_first();
+         break;
         case 7:
-        delete_last();
-        break;
+         delete_last();
+         break;
         case 8:
-        delete_middle();
-        break;
+         delete_middle();
+         break;
         case 9:
+         count_node();
+         break;
+        case 10:
+         search();
+         break;
+        case 11:
          printf("EXIT:\n");
          break;
         default:
          printf("invalid input:\n");
      }
     }
-    while(choice !=9);
+    while(choice !=11);
 }
 
 void create(){
@@ -227,7 +236,53 @@ void delete_middle(){
          }
         pre_pointer->add = pointer->add;
         printf("deleted element fron position %d is %d",pos,pointer->data);
+        free(pointer);
         }
 
     }
 }
+
+void count_node(){
+    if(start == NULL){
+        printf("no linked list found:\n");
+    }
+    else{
+        int count = 0;
+        pointer = start;
+        while(pointer != NULL){
+            count++;
+            pointer=pointer->add;
+        }
+       printf("total number of nodes in the linled list are %d\n",count);
+    }
+}
+
+void search(){
+    if(start == NULL){
+        printf("no linked list found:\n");
+    }
+    else{
+        int x,count = 0,pos =1;
+        printf("enter the element to search\n");
+        scanf("%d",&x);
+        pointer = start;
+        while(pointer != NULL){
+            if(pointer->data == x){
+                count++;
+                break;
+            }
+            else{
+                pointer = pointer->add;
+                pos++;
+
+            }
+        }
+        if(count != 0){
+            printf("element found at %d position",pos);
+        }
+        else{
+            printf("element not found:\n");
+        }
+    }
+}
+
