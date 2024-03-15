@@ -19,6 +19,7 @@ void delete_last();
 void delete_middle();
 void count_node();
 void search();
+void sort();
 
 
 void main(){
@@ -29,7 +30,7 @@ void main(){
      printf("\nyou have following operations to perform:\n");
      printf("1.insert\t2.display\t3.insert a element at the first\t4.insert the element at last\t5.insert the element at the middle\n");
      printf("6.delete the first element\t7.delete the last element\t8.delete the middle element\t9.count the number of node\n");
-     printf("10.search a element\t11.exit");
+     printf("10.search a element\t11.sort the elements of the linked list\t12.exit");
      printf("\nenter ur choice:\n");
      scanf("%d",&choice);
      switch(choice){
@@ -64,13 +65,16 @@ void main(){
          search();
          break;
         case 11:
+         sort();
+         break;
+        case 12:
          printf("EXIT:\n");
          break;
         default:
          printf("invalid input:\n");
      }
     }
-    while(choice !=11);
+    while(choice !=12);
 }
 
 void create(){
@@ -286,3 +290,26 @@ void search(){
     }
 }
 
+void sort(){
+    if(start == NULL){
+        printf("no linked list found:\n");
+    }
+    else{
+      int temp;
+      pre_pointer = start;
+      while(pre_pointer != NULL){
+        pointer = pre_pointer->add;
+        while(pointer != NULL){
+         if(pre_pointer->data > pointer->data){
+            temp = pre_pointer->data;
+            pre_pointer->data = pointer->data;
+            pointer->data = temp;
+         }
+         pointer = pointer->add;
+        }
+        pre_pointer = pre_pointer->add;
+      }
+    printf("\n the linked list now has been sorted successfully:\n");
+
+   }
+}
