@@ -29,7 +29,7 @@ void main(){
  printf("(u have the following opreations to perform)\n");
  printf("1.CREATE\t2.DISPLAY\t3.DISPLAY FROM BACK OR REVERSE TRAVERSING\t4.COUNT THE NUMBER OF NODES\n");
  printf("5.INSERT A NODE AT THE FIRSt posiTION\t6.INSERT A NODE AT THE LAST\t7.INSERT A NODE AT THE MIDDLE\n");
- printf("8.DELETE THE FIRST NODE\t9.DELETE THE LAST NODE\t10.EXIT\n");
+ printf("8.DELETE THE FIRST NODE\t9.DELETE THE LAST NODE\t10.DELETE A NODE FROM MIDDLE\t11.EXIT\n");
  scanf("%d",&choice);
  
  switch(choice){
@@ -237,9 +237,9 @@ void insert_middle(){
             new_node->l_add = NULL;
             new_node->data = n;
             new_node->r_add = NULL;
-
+            
             pointer = start;
-            int i=0;
+            int i=1;
             while(i<pos){
                 pre_pointer = pointer;
                 pointer = pointer->r_add;
@@ -290,27 +290,32 @@ void del_middle(){
     }
     else{
         int pos,count=0;
-        printf("enter the position from where u wanna delete the node:\n");
         pointer = start;
         do{
             count++;
             pointer = pointer->r_add;
         }
         while( pointer != start);
-     printf("it should be less than %d",count);
+    
+     printf("enter the position from where u wanna delete the node:\n");
+     printf("it should be less than %d\n",count);
      scanf("%d",&pos);
+     
+
     if(pos > count){
         printf("position not available:\n");
     }
     else{
     pointer = start;
+
     int i=1;
     while(i < pos){
         pre_pointer = pointer;
         pointer = pointer->r_add;
         pos_pointer = pointer->r_add;
+        i++;
     }
-    pos_pointer->l_add = pos_pointer;
+    pre_pointer->r_add = pos_pointer;
     pos_pointer->l_add = pre_pointer;
     printf("deleted node from %d position is %d",count,pointer->data);
     free(pointer);
