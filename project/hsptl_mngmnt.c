@@ -4,24 +4,24 @@
 
 struct patient_record{
     int patient_id;
-    char name[20];
+    char name;
     int age;
-    char medical_condn[25];
-    int appointemnt;
+    char medical_condn;
+    int appointment;
     struct patient_record *add;
 };
 struct patient_record *start = NULL,*new_node,*pointer;
 
-void create();
 void insert();
 void display_whole();
+void delete();
 
 
 
 void main(){
 printf("----XYZ--HOSPITAL----\n");
-int count=0;
-int choice;
+
+int choice,choice1;
 do{  
     printf("1.Manage Patient record:\n");
     scanf("%d",&choice);
@@ -29,41 +29,38 @@ do{
     switch(choice){
         case 1:
         printf("-> MANAGING PATIENT RECORD <-\n");
-        
         printf("u hv following options:\n");
-        printf("1.CREATE\t2.INSERT\t3.DISPLAY WHOLE LIST\n4.EXIT\n");
-        scanf("%d",choice);
-        
-        switch(choice){
-        case 1:
-        printf("creation can be done only one time as second time creation will delete whole of the previously stored data:\n");
-        void create();
-        count++;
-        break;
-        case 2:
-        void insert();
-        break;
-        case 3:
-        void display_whole();
-        break;
-        case 4:
-        printf("exited successfully:\n");
-        break;
+        printf("1.INSERT\t2.DISPLAY WHOLE LIST\t3.delete a record\t4.EXIT\n");
+        scanf("%d",&choice1);
+        if(choice1 == 1){
+            void insert();
         }
+        if(choice1 == 2){
+            void display_whole();
+        }
+        if(choice1 == 3){
+            void delete();
+        }
+        if(choice1 == 4){
+         printf("exited");
+        }
+        else{
+            printf("invalid input:\n");
+        }
+     
+     break;
 
-        break;
+        }
     }
-}
+
 while(choice != 4); 
 
 }
 
-void create(){
-    int count;
-do{
-    char name[20],medical_condn[40],optii;
-    int age,appointment;
-   printf("enter the name of the patient\n");
+void insert(){
+    int pattient_id,appointment,age;
+    char name,medical_condn,optii;
+printf("enter the name of the patient\n");
    scanf("%s",name);
    printf("enter the age of the patient:\n");
    scanf("%d",&age);
@@ -71,104 +68,45 @@ do{
    scanf("%s",&medical_condn);
    printf("enter the appointemt time in hrs ");
    scanf("%d",appointment);
+   printf("enter the patient id:\n");
+   scanf("%d",&pattient_id);
 
-
-   start = (struct patient_record *)malloc(sizeof(struct patient_record));
-   
-   start->name = name;    
-   start->age = age;
-   start->medical_condn = medical_condn;
-   start->appointemnt = appointment;
-   start->patient_id = new_node;
-   
-   start->add = NULL;
-   
-   printf("data entered successfully and the unique patient id of the patient is %d",new_node->patient_id = start);
-
-   printf("to continue further enter Y or y.\n");
-   optii = getch();
-   pointer = start;
-
-   while(optii == 'y' || optii == 'Y'){
-     char name[20],medical_condn[40],optii;
-    int age,appointment;
-   printf("enter the name of the patient\n");
-   scanf("%s",name);
-   printf("enter the age of the patient:\n");
-   scanf("%d",&age);
-   printf("wnter the medical condition of the patient:\n");
-   scanf("%s",&medical_condn);
-   printf("enter the appointemt time in hrs ");
-   scanf("%d",appointment);
-
-
-   new_node = (struct patient_record *)malloc(sizeof(struct patient_record));
-   
-   new_node->name = name;    
-   new_node->age = age;
-   new_node->medical_condn = medical_condn;
-   new_node->appointemnt = appointment;
-   new_node->patient_id = new_node;
-   
-   new_node->add = NULL;
-   pointer->add = new_node;
-   pointer = pointer->add;
-   printf("data entered successfully and the unique patient id of the patient is %d",new_node->patient_id = new_node);
-   }
-}
-while(count == 0);
-
-}
-
-void insert(){
     if(start == NULL){
-        printf("no database exists:\n");
-    }
-    else{
-    char name[20],medical_condn[40],optii;
-    int age,appointment;
-   printf("enter the name of the patient\n");
-   scanf("%s",name);
-   printf("enter the age of the patient:\n");
-   scanf("%d",&age);
-   printf("wnter the medical condition of the patient:\n");
-   scanf("%s",&medical_condn);
-   printf("enter the appointemt time in hrs ");
-   scanf("%d",appointment);
 
-
-   new_node = (struct patient_record *)malloc(sizeof(struct patient_record));
+     start = (struct patient_record*)malloc(sizeof(struct patient_record));
+ 
+     start->name = name;    
+     start->age = age;
+     start->medical_condn = medical_condn;
+     start->appointment = appointment;
+     start->patient_id = pattient_id;
    
-   new_node->name = name;    
-   new_node->age = age;
-   new_node->medical_condn = medical_condn;
-   new_node->appointemnt = appointment;
-   new_node->patient_id = new_node;
-   new_node->add = NULL;
+     start->add = NULL;
 
-   pointer = start;
-   while(pointer->add != NULL){
-   pointer = pointer->add;
-   }
-   pointer->add = new_node;
-   printf("data entered successfully and the unique patient id of the patient is %d",new_node->patient_id = new_node);
-   }
-}
-
-void display_whole(){
-    if(start == NULL){
-        printf("no database created:\n");
+     pointer = start;
+     printf("record entered successfully:\n");
     }
-    else{
-        printf("WHOLE RECORD DISPLAY\n");
-         pointer = start;
-    printf("\npatient_id\tname\tage\tmedical_condn\tappointemnt\n");
-    while(pointer != NULL){
 
-        printf("%d\t%s\t%d\t%s\t%d",pointer->patient_id,pointer->name,pointer->age,pointer->medical_condn,pointer->appointemnt);
-        printf("\n");
+    else{ 
+        new_node = (struct patient_record *)malloc(sizeof(struct patient_record));
+        new_node->name = name;    
+        new_node->age = age;
+        new_node->medical_condn = medical_condn;
+        new_node->appointment = appointment;
+        new_node->patient_id = pattient_id;
+
+        new_node->add = NULL;
+        pointer = start;
+
+        while(pointer->add != NULL){
         pointer = pointer->add;
-    }
-}
+       }
+
+        pointer->add = new_node;
+
+        printf("data entered successsfully");
+        
+ }
+
 }
 
