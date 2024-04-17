@@ -40,7 +40,7 @@ high=n-1;
 
 while(low <= high){
 
-  int mid = (high+low)/2;
+   mid = (high+low)/2;
 
     if(arr[mid] > key ){
      high = mid - 1;
@@ -57,7 +57,7 @@ if(found == 0){
     printf("not found:\n");
 }
 else{
-    printf("found at %d",mid);
+    printf("found at %d position",mid +1);
 }
 return 0;
 }
