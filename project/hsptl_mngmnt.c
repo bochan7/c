@@ -87,7 +87,7 @@ srand(time(NULL)); // seeding the random function with respect to time to genera
 
 int choice,choice1,choice2;
 do{  
-    printf("\n1.Manage Patient record:\t2.Manage Patient appointment:\t3.Showcase Doctor Patient relationship:\n");
+    printf("\n1.Manage Patient record:\t2.Manage Patient appointment:\t3.Showcase Doctor Patient relationship:\t4.EXIT\n");
     scanf("%d",&choice);
                               //taking input    
     switch(choice){
@@ -174,7 +174,8 @@ do{
         printTree(hospital, 0); 
         
       break;
-        
+    case 4:
+     printf("exiting:\n");
     }
     }
     
@@ -325,7 +326,7 @@ while (pointer != NULL)
     printf("patient found:\n");
      if(starrt == NULL){
         starrt = (struct patient_appointment *)malloc(sizeof(struct patient_appointment));
-        strcpy(starrt->name,start->name);
+        strcpy(starrt->name,pointer->name);
         starrt->patient_id = pointer->patient_id;
         starrt->time = pointer->appointment;
         char doc[30];
